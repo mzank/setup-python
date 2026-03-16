@@ -104,7 +104,7 @@ deactivate
 
 ## Jupyter
 
-Website: https://jupyter.org/
+Website: [Jupyter](https://jupyter.org/)
 
 ```bash
 # Jupyter Notebook installieren/aktualisieren
@@ -138,7 +138,7 @@ http://localhost:8888
 
 ## PyTorch
 
-Website: https://pytorch.org/
+Website: [PyTorch](https://pytorch.org/)
 
 ```bash
 # Installation inklusive CUDA
