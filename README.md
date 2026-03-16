@@ -25,10 +25,10 @@ Dies ist mein persönlicher Schummelzettel für Python 3 unter Linux. Andere Pla
 # Python-Skript ausführen
 python3 <PYTHON.PY-DATEI>
 
-# Einzeiler ausführen, z. B. NumPy
+# Einzeiler ausführen, zum Beispiel NumPy
 python3 -c "import numpy as np; print(np.__version__)"
 
-# Modul-Aufruf (z. B. pip)
+# Modul-Aufruf (zum Beispiel pip)
 python3 -m pip list
 ```
 
@@ -54,30 +54,40 @@ pip install -r requirements.txt
 # Installierte Pakete anzeigen
 pip list
 
-# Paket aktualisieren (zB NumPy)
+# Paket aktualisieren (zum Beispiel NumPy)
 pip install --upgrade numpy
 
 # Paket deinstallieren
 pip uninstall <PAKET>
 
-# Unbenötigte Abhängigkeiten entfernen
+# Unbenötigte Abhängigkeiten entfernen:
+# Mittels
+# pip uninstall <PAKET>
+# werden Pakete, welche nur wegen Abhängigkeit installiert wurden,
+# NICHT mitentfernt.
+# Verwende daher pip-autoremove:
 pip install pip-autoremove
 pip-autoremove <PAKET>
 
 # pip Cache leeren
 pip cache purge
 
-# Paket in Ordner installieren (unabhängig vom Standard-Python-Pfad)
+# Installation eines Pakets in einen Ordner, 
+# wobei Abhängigkeiten aufgelöst werden.
+# Die installierten Pakete landen nicht im Standard-Python-Pfad site-packages
+# und stören daher die Standard-Python-Umgebung nicht. 
 pip install -t <ORDNER> <PAKETE>
 
-# Python-Projekt im Entwickler-Modus installieren
+# Das Python‑Projekt im aktuellen Verzeichnis (der Punkt .) 
+# im Entwickler‑Modus installieren.
 # Voraussetzung: setup.py oder pyproject.toml
 pip install -e .
 
-# PYTHONPATH setzen
+# Umgebungsvariable setzen, damit meinOrdner für Python verfügbar ist:
 export PYTHONPATH="$HOME/meinOrdner:$PYTHONPATH"
 
-# Sauberer mit Bash-Parameterexpansion
+# Sauberer mit Bash-Parameterexpansion 
+# (Hänge :$PYTHONPATH nur an, wenn PYTHONPATH bereits existiert.):
 export PYTHONPATH="$HOME/meinOrdner${PYTHONPATH:+:$PYTHONPATH}"
 ```
 
@@ -92,7 +102,7 @@ python3 -m venv /path/to/directory
 # Aktivieren
 source /path/to/directory/bin/activate
 
-# Pakete installieren
+# Pakete installieren in virtueller Umgebung mittels:
 pip install <PAKETE>
 
 # Deaktivieren
@@ -122,16 +132,24 @@ jupyter lab
 
 ### Zugriff von Rechner A auf Rechner B über SSH
 
+Um von einem Rechner A per SSH auf JupyterLab auf einem Rechner B
+zuzugreifen, verwendet man SSH-Port-Forwarding (Tunneling):
+
 ```bash
 # Auf Rechner B
 jupyter lab --no-browser --port=8888
+```
+Ausgabe enthält Zeile mit Token:
+http://localhost:8888/lab?token=abc123...
 
+```bash
 # Auf Rechner A (SSH-Port-Forwarding)
 ssh -N -L 8888:localhost:8888 benutzername@IP_VON_RECHNER_B
 ```
 
 Auf Rechner A im Browser öffnen:
 http://localhost:8888
+Token von oben eingeben oder man kopiert gleich obigen Link inkl. Token.
 
 ---
 
@@ -144,8 +162,10 @@ Website: [PyTorch](https://pytorch.org/)
 # Installation inklusive CUDA
 pip install torch torchvision torchaudio
 
-# Installation der CPU-Version
+# Installation für der CPU-Version, siehe
+# https://pytorch.org/get-started/locally/ :
 pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
+
 ```
 
 ---
