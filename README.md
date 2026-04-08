@@ -147,9 +147,9 @@ http://localhost:8888/lab?token=abc123...
 ssh -N -L 8888:localhost:8888 benutzername@IP_VON_RECHNER_B
 ```
 
-Auf Rechner A im Browser öffnen:
-http://localhost:8888
-Token von oben eingeben oder man kopiert gleich obigen Link inkl. Token.
+Auf Rechner A:
+- im Browser öffnen: http://localhost:8888
+- Token von oben eingeben oder man kopiert gleich obigen Link inkl. Token.
 
 ---
 
